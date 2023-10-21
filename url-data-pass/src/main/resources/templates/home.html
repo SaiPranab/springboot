@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Url data</title>
+</head>
+<body>
+    <h1>Hello page</h1>
+    <a th:href="|/hello?id=${id}&name=${name}|">Click here</a>
+    <a th:href="|/hello?id=${id}|">Click here</a>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About</title>
+</head>
+
+<body>
+    <dl th:object="${student}">
+        <dt>Student details</dt>
+        <dd th:text="*{name}"></dd>
+        <dd th:text="*{roll}"></dd>
+        <dd th:text="*{fee}"></dd>
+    </dl>
+</body>
+
+</html>
