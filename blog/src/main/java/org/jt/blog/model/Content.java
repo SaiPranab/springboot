@@ -1,5 +1,13 @@
 package org.jt.blog.model;
 
-public record Content(int id, String heading, String description) {
+import lombok.Data;
 
+/**
+ * Content
+ */
+@Data
+public class Content {
+    private int id;
+    private String heading;
+    private String description;
 }
