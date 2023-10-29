@@ -1,3 +1,3 @@
-function onHeadingClick() {
-    location.href = "/content"
+function onHeadingClick(id) {
+    location.href = `/content?id=${id}`;
 }

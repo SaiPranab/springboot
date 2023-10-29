@@ -28,6 +28,17 @@ public class BlogService {
 
     public List<Content> getContents() {
         var sql = "SELECT * FROM %s".formatted(CONTENT_TABLE);
-        return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Content.class));    
+        return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Content.class));
+    }
+
+    public Content getContent(int id) {
+        var sql = "SELECT * FROM %s WHERE id = ?".formatted(CONTENT_TABLE);
+        return jdbcTemplate
+                .queryForObject(sql, new BeanPropertyRowMapper<>(Content.class), id);
+    }
+
+    public void deleteById(int id) {
+        var sql = "DELETE FROM %s WHERE id = ?".formatted(CONTENT_TABLE);
+        jdbcTemplate.update(sql, id);
     }
 }
