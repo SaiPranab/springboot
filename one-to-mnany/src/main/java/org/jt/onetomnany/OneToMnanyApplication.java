@@ -25,6 +25,21 @@ public class OneToMnanyApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		insert();
+		// retiveTeacher(1);
+	}
+
+
+	private void retiveTeacher(int id) {
+		var teacher = teacherRepository.findById(id).orElseThrow();
+
+		System.out.println(teacher.getTeacherId());
+		System.out.println(teacher.getTeacherName());
+		System.out.println(teacher.getTeacherEmail());
+
+		var courses = teacher.getCourses();
+		for (Course course : courses) {
+			System.out.println(course.getCourseId() + " " + course.getCourseName());
+		}
 	}
 
 	private void insert() {
@@ -42,6 +57,16 @@ public class OneToMnanyApplication implements CommandLineRunner {
 		teacher1.setCourses(List.of(course1, course2));
 		teacher2.setCourses(List.of(course3, course4));
 		teacher3.setCourses(List.of(course5, course6));
+
+		course1.setTeacher(teacher1);
+		course2.setTeacher(teacher1);
+		
+		course3.setTeacher(teacher2);
+		course4.setTeacher(teacher2);
+		
+		course5.setTeacher(teacher3);
+		course6.setTeacher(teacher3);
+
 
 		teacherRepository.saveAll(List.of(teacher1, teacher2, teacher3));
 	}
