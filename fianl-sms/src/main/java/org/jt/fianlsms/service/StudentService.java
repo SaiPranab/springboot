@@ -1,6 +1,7 @@
 package org.jt.fianlsms.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.jt.fianlsms.model.Student;
 import org.jt.fianlsms.repository.StudentRepository;
@@ -24,5 +25,9 @@ public class StudentService {
 
     public Student getStudent(String id) {
         return studentRepository.findById(id).orElseThrow(() -> new RuntimeException("Student not found"));
+    }
+
+    public Optional<Student> getByRoll(int roll) {
+        return studentRepository.findByRoll(roll);
     }
 }
