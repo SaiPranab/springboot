@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo app</title>
+    <script src="/js/todo.js" defer></script>
+</head>
+
+<body>
+    <main>
+        <section>
+            <form action="todo" method="post">
+                <input type="text" name="task">
+                <input type="submit">
+            </form>
+        </section>
+        <section>
+            <div th:each="todo : ${todos}">
+                <input type="checkbox" th:checked="${todo.isCompleted}"
+                     th:attr="data-id=|${todo.id}|"
+                     id="checkbox"
+                     >
+                <p th:text="${todo.task}"></p>
+                <a th:href="|/remove?id=${todo.id}|">X</a>
+            </div>
+        </section>
+    </main>
+</body>
+
+</html>
